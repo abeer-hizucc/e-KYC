@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="mat-card-title">
+      <h1>Submit Additional Documents(Optional)</h1>
+    </div>
+   <br>
+    <h2>Office ID/Driving License</h2>
+    <br>
+    <input type="file" #fileUpload class="file-input" [accept]="requiredFileType" (change)="onOtherDocument1Selected($event)"
+      style="display: none;" />
+  
+    <div class="mb-2">
+  
+      <span [ngClass]="fileNameOtherDocument1? 'mat-text-success' : 'mat-text-danger'">
+        {{ fileNameOtherDocument1 || 'No file uploaded yet.' }}
+      </span>
+  
+    </div>
+    <br>
+    <div class="mb-2" *ngIf="isOtherDocument1Selected">
+      <button mat-raised-button (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon> Select
+      </button>
+      </div>
+      <div class="mb-2" *ngIf="!isOtherDocument1Selected">
+        <button mat-raised-button (click)="submitOtherDocument1()" [disabled]="isOtherDocument1Selected">
+          <mat-icon>cloud_upload</mat-icon> Upload
+        </button>
+        
+        <button mat-raised-button (click)="cancelOtherDocument1()">
+          <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+        </button>
+      </div>
+    <br>
+    <input type="file" #fileUpload2 class="file-input" [accept]="requiredFileType" (change)="onOtherDocument2Selected($event)"
+      style="display: none;" />
+  
+    <div class="mb-2">
+  
+      <span [ngClass]="fileNameOtherDocument2? 'mat-text-success' : 'mat-text-danger'">
+        {{ fileNameOtherDocument2 || 'No file uploaded yet.' }}
+      </span>
+  
+    </div>
+    <br>
+    <div class="mb-2" *ngIf="isOtherDocument2Selected">
+      <button mat-raised-button (click)="fileUpload2.click()">
+        <mat-icon>attach_file</mat-icon> Select
+      </button>
+     
+    </div>
+    <div class="mb-2" *ngIf="!isOtherDocument2Selected">
+      <button mat-raised-button (click)="submitOtherDocument2()" [disabled]="isOtherDocument2Selected">
+        <mat-icon>cloud_upload</mat-icon> Upload
+      </button>
+      
+      <button mat-raised-button (click)="cancelOtherDocument2()">
+        <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+      </button>
+    </div>
+    </div>

@@ -1,0 +1,30 @@
+<div class="containerr">
+  <h1>Upload your recent photograph</h1>
+<br>
+
+<input type="file" (change)="onIndividualPhotoSelected($event)" #fileUpload style="display: none;">
+
+<div class="mb-2">
+  <span [ngClass]="fileName? 'mat-text-success' : 'mat-text-danger'">
+  {{ fileName || 'No file uploaded yet.' }}
+  </span>
+
+ </div>
+ 
+ 
+<br>
+<div class="mb-2" *ngIf="isPhotoSelected">
+  <button mat-raised-button (click)="fileUpload.click()">
+    <mat-icon>attach_file</mat-icon> Select
+  </button>
+</div>
+<div class="mb-2" *ngIf="!isPhotoSelected">
+  <button mat-raised-button (click)="submitIndividualPhoto()" [disabled]="isPhotoSelected">
+    <mat-icon>cloud_upload</mat-icon> Upload
+  </button>
+  <!-- <input type="file" #fileUpload style="display: none;" (change)="onIndividualPhotoSelected($event)"> -->
+  <button mat-raised-button (click)="cancel()">
+    <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+  </button>
+</div>
+</div>

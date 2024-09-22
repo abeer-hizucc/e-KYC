@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  height: 100%;
+}
+
+.presentation {
+  margin: 0 20px; /* Added margin for spacing */
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+ 
+}
+
+.point {
+  margin-bottom: 20px;
+}
+
+.point b {
+  font-size: 18px;
+  color: #007BFF;
+}
+
+.point p {
+  font-size: 16px;
+}
+
+figure {
+  
+  display: flex;
+  flex-flow: column;
+  padding: 5px;
+  max-width: 600px;
+  max-height: 700px;
+  margin: auto;
+}
+figcaption {
+  padding: 3px;
+  text-align: center;
+}

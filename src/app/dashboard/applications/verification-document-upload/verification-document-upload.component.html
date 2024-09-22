@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="mat-card-title">
+    <h1>Submit Verification Documents</h1>
+  </div>
+  <br>
+  
+  <br>
+  <h2 style="color: var(--medium-blue);"> Passport/e-Tin/Birth Certificate</h2>
+
+  <input type="file" #fileUpload class="file-input" [accept]="requiredFileType" (change)="onPassportSelected($event)"
+    style="display: none;" />
+
+  <div class="mb-2">
+
+    <span [ngClass]="fileNamePassport? 'mat-text-success' : 'mat-text-danger'">
+      {{ fileNamePassport || 'No file uploaded yet.' }}
+    </span>
+
+  </div>
+  <br>
+  <div class="mb-2" *ngIf="isPassportSelected">
+    <button mat-raised-button (click)="fileUpload.click()">
+      <mat-icon>attach_file</mat-icon> Select
+    </button>
+  </div>
+  <div class="mb-2" *ngIf="!isPassportSelected">
+    <button mat-raised-button (click)="submitPassport()" [disabled]="isPassportSelected">
+      <mat-icon>cloud_upload</mat-icon> Upload
+    </button>
+    <!-- <input type="file" #fileUpload style="display: none;" (change)="onPassportSelected($event)"> -->
+    <button mat-raised-button (click)="cancelPassport()">
+      <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+    </button>
+
+  </div>
+  <br>
+  <!-- <h3 style="color: var(--medium-blue);">Passport/e-Tin/Birth Certificate</h3>
+  <input type="file" class="file-input" [accept]="requiredFileType" (change)="onTinCertificateSelected($event)"
+    #file2Upload style="display: none;" />
+
+  <div class="mb-2">
+    <span [ngClass]="fileNameTinCertificate? 'mat-text-success' : 'mat-text-danger'">
+      {{ fileNameTinCertificate|| 'No file uploaded yet.' }}
+    </span>
+
+  </div>
+  <br>
+  <div class="mb-2">
+    <button mat-raised-button (click)="file2Upload.click()">
+      <mat-icon>attach_file</mat-icon> Select
+    </button>
+    <button mat-raised-button (click)="submitTinCertificate()" [disabled]="isTinCertificateSelected">
+      <mat-icon>cloud_upload</mat-icon> Upload
+    </button>
+    <input type="file" #file2Upload style="display: none;" (change)="onTinCertificateSelected($event)"> -->
+    <!-- <button mat-raised-button (click)="cancelTinCertificate()">
+      <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+    </button> -->
+    <br>
+    <br>
+    <h2 style="color: var(--medium-blue);">Utility Document</h2>
+    <h4 style="color: var(--red);">*Please Submit Utility Documents issued within 6 months</h4>
+    <form [formGroup]="utilityForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Utility Document Type</mat-label>
+            <mat-select formControlName="utilityBillType">
+                <mat-option value="electricity">Electricity</mat-option>
+                <mat-option value="gas">Gas</mat-option>
+                <mat-option value="water">Water</mat-option>
+    
+            </mat-select>
+        </mat-form-field>
+      </form>
+    <div *ngIf="utilityForm.get('utilityBillType')?.value">
+      <p>Is your Utility Document issued within 6 months?</p>
+      <mat-checkbox [(ngModel)]="isUtilityDocumentValid">Yes</mat-checkbox>
+    </div>
+    <div *ngIf="utilityForm.get('utilityBillType')?.value && isUtilityDocumentValid">
+    <input type="file" class="file-input" [accept]="requiredFileType" (change)="onUtilitySelected($event)"
+    #fileUtilityUpload style="display: none;" />
+
+    <div class="mb-2">
+    <span [ngClass]="fileNameUtility ? 'mat-text-success' : 'mat-text-danger'">
+    {{ fileNameUtility ? fileNameUtility : 'No ' + utilityForm.get('utilityBillType')?.value + ' Bill Document uploaded yet' }}
+    </span>
+</div>
+
+<br>
+<br>
+
+<div class="mb-2" *ngIf="isUtilitySelected">
+  <button mat-raised-button (click)="fileUtilityUpload.click()">
+    <mat-icon>attach_file</mat-icon> Select
+  </button>
+  
+</div>
+<div class="mb-2" *ngIf="!isUtilitySelected">
+  <button mat-raised-button (click)="submitUtility()" [disabled]="isUtilitySelected">
+    <mat-icon>cloud_upload</mat-icon> Upload
+  </button>
+  <!-- <input type="file" #fileUtilityUpload style="display: none;" (change)="onUtilitySelected($event)"> -->
+  <button mat-raised-button (click)="cancelUtility()">
+    <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+  </button>
+</div>
+</div>
+    
+
+</div>

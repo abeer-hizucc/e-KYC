@@ -1,0 +1,111 @@
+<h1>Complete Organization Details Form</h1>
+<form [formGroup]="organizationDetailForm">
+    <div class="form-row">
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Organization Name</mat-label>
+            <input matInput placeholder="Organization Name" formControlName="orgName">
+          </mat-form-field>
+        </div>
+      </div>
+    <div class="form-row">
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Organization Phone Number</mat-label>
+                <input matInput placeholder="Organization Phone Number" formControlName="orgPhoneNumber">
+                <mat-error *ngIf="organizationDetailForm.get('orgPhoneNumber')?.hasError('phoneNumber')&& organizationDetailForm.get('orgPhoneNumber')?.touched">
+                Enter Valid Phone Number
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Organization Email</mat-label>
+            <input matInput placeholder="Make Sure to Provide Organizational Email" formControlName="orgEmail">
+            <mat-error *ngIf="organizationDetailForm.get('orgEmail')?.hasError('email')&& organizationDetailForm.get('orgEmail')?.touched">
+            Enter Valid Phone Number
+            </mat-error>
+          </mat-form-field>
+        </div>
+    </div>
+      <div class="form-row">
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Applicant Designation</mat-label>
+            <input matInput placeholder="Applicant Designation" formControlName="applicantDesignation">
+          </mat-form-field>
+        </div>
+    <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Applicant Unit</mat-label>
+            <input matInput placeholder="Organization Unit" formControlName="applicantDepartment">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>House Number</mat-label>
+                <input matInput placeholder="#House Number" formControlName="orgHouseNumber">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Street Address</mat-label>
+                <input matInput placeholder="Street Address" formControlName="orgStreetAddress">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>District</mat-label>
+                <input
+                 matInput 
+                 placeholder="District"
+                 [matAutocomplete]="auto"
+                 (input)="onDistrictSelectedManually($event)"
+                 formControlName="orgDistrict">
+                 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onDistrictSelected($event)">
+                    <mat-option *ngFor="let option of filteredDistrictOptions | async" [value]="option">
+                        {{option}}
+                      </mat-option>
+
+                 </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input
+                 matInput 
+                 placeholder="City"
+                 [matAutocomplete]="cityAuto"
+                 formControlName="orgCity">
+                 <mat-autocomplete #cityAuto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredCityOptions | async" [value]="option">
+                        {{option}}
+                      </mat-option>
+                 </mat-autocomplete>
+            </mat-form-field>
+        </div>
+
+       
+    </div>
+    <div class="form-row">
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Post Code</mat-label>
+                <input matInput placeholder="Post Code" formControlName="orgPostCode">
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Country" formControlName="orgCountry" (keydown.enter)="onSubmit()">
+            </mat-form-field>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,14 @@
+<div class="container">
+    
+    <div class="head">
+        <app-header></app-header>
+        <ngx-loading-bar [fixed]="false" [includeSpinner]="false" [height]="'5px'" [color]="'#005D99'"></ngx-loading-bar>
+    </div>
+    <div class="route">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="foot">
+        <app-footer></app-footer>
+    </div>
+
+</div>

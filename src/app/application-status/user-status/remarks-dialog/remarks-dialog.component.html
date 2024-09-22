@@ -1,0 +1,15 @@
+<div class="header">
+  <h4>Remarks</h4>
+  <button class="close-icon-button" mat-icon-button (click)="closepopup()"> <mat-icon>close</mat-icon></button>
+</div>
+<div mat-dialog-content>
+  <h4>{{ data.remarks }}</h4>
+</div>
+<div class="footer">
+  <div mat-dialog-actions>
+    
+    <h4 *ngIf="data.applicationStatus=='Rejected'">Application Rejected</h4>
+    <h4 *ngIf="data.applicationStatus=='Accepted'">Application Successful</h4>
+    <h4 *ngIf="data.applicationStatus=='Pending'">Application Pending</h4>
+  </div>
+</div>

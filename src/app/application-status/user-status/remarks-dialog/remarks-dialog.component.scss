@@ -1,0 +1,19 @@
+@import "../../../../assets/css/partials/variables";
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h4 {
+        margin: 5%;
+        color: $medium-blue;
+    }
+}
+
+.footer {
+    h4 {
+        color: $white;
+    }
+    background-color: $medium-blue;
+}

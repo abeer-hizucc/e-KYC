@@ -1,0 +1,41 @@
+<div class="class-container">
+
+    <div class="form-container">
+        <mat-card-content>
+            <mat-card-title>
+                <h1>OTP Verification</h1>
+                <h3>* An OTP has been sent to your mail. Enter the email and OTP to get Verified</h3>
+            </mat-card-title>
+            <br>
+            <br>
+            <form [formGroup]="emailForm">
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="email" placeholder="Email">
+                    <mat-error *ngIf="emailForm.controls['email'].errors?.['required']">Email is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-spinner *ngIf="isSpinnerSpinning" diameter="28"></mat-spinner>
+                
+                <mat-form-field  appearance="outline">
+                    <input matInput formControlName="otp" placeholder="OTP">
+                    <mat-error
+                        *ngIf="emailForm.controls['otp'].errors?.['required'] && emailForm.controls['otp'].touched">OTP
+                        is required</mat-error>
+                    <mat-error *ngIf="emailForm.controls['otp'].errors?.['minlength']">OTP is too short</mat-error>
+                    <mat-error *ngIf="emailForm.controls['otp'].errors?.['maxlength']">OTP is too long</mat-error>
+                </mat-form-field>
+                <br>
+                
+                <button  mat-raised-button color="primary" type="submit"
+                    [disabled]="emailForm.controls['email'].invalid || emailForm.controls['otp'].invalid" (click)="SubmitOTP()">Submit OTP</button>
+                <br>
+                <br>
+                <mat-spinner *ngIf="isOTPVerifiedSpinner" diameter="30"></mat-spinner>    
+                <br>
+            </form>
+        </mat-card-content>
+    </div>
+
+
+
+</div>

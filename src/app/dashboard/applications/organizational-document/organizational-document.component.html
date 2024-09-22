@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="mat-card-title">
+    <h1>Submit Organization Verification Documents</h1>
+  </div>
+  <h3 style="color: var(--medium-blue);">{{OrganizationMandatory_1Doc}}</h3>
+
+  <input type="file" #fileUpload class="file-input" [accept]="requiredFileType" (change)="onOrganizationMandatory_1Selected($event)"
+    style="display: none;" />
+
+  <div class="mb-2">
+
+    <span [ngClass]="fileNameOrganizationMandatory_1? 'mat-text-success' : 'mat-text-danger'">
+      {{ fileNameOrganizationMandatory_1 || 'No file uploaded yet.' }}
+    </span>
+
+  </div>
+  <br>
+  <div class="mb-2" *ngIf="isOrganizationMandatory_1Selected">
+    <button mat-raised-button (click)="fileUpload.click()">
+      <mat-icon>attach_file</mat-icon> Select
+    </button>
+
+  </div>
+  <div class="mb-2" *ngIf="!isOrganizationMandatory_1Selected">
+    <button mat-raised-button (click)="submitOrganizationMandatory_1()" [disabled]="isOrganizationMandatory_1Selected">
+      <mat-icon>cloud_upload</mat-icon> Upload
+    </button>
+    <!-- <input type="file" #fileUpload style="display: none;" (change)="onEmployeeIDSelected($event)"> -->
+    <button mat-raised-button (click)="cancelOrganizationMandatory_1()">
+      <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+    </button>
+  </div>
+  <br>
+  <h3 style="color: var(--medium-blue);">{{OrganizationMandatory_2Doc}}</h3>
+  <input type="file" class="file-input" [accept]="requiredFileType" (change)="onOrganizationMandatory_2Selected($event)"
+    #file2Upload style="display: none;" />
+
+  <div class="mb-2">
+    <span [ngClass]="fileNameOrganizationMandatory_2? 'mat-text-success' : 'mat-text-danger'">
+      {{ fileNameOrganizationMandatory_2|| 'No file uploaded yet.' }}
+    </span>
+
+  </div>
+  <br>
+  <div class="mb-2" *ngIf="isOrganizationMandatory_2Selected">
+    <button mat-raised-button (click)="file2Upload.click()">
+      <mat-icon>attach_file</mat-icon> Select
+    </button>
+  </div>
+  <div class="mb-2" *ngIf="!isOrganizationMandatory_2Selected">
+    <button mat-raised-button (click)="submitOrganizationMandatory_2()" [disabled]="isOrganizationMandatory_2Selected">
+      <mat-icon>cloud_upload</mat-icon> Upload
+    </button>
+    <!-- <input type="file" #file2Upload style="display: none;" (change)="onApprovalLetterSelected($event)"> -->
+    <button mat-raised-button (click)="cancelOrganizationMandatory_2()">
+      <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+    </button>
+  </div>
+  <br>
+  <br>
+
+  <div *ngIf="isRequired_3|| isRequired_4">
+    
+ 
+    <h3 style="color: var(--medium-blue);">{{OrganizationMandatory_3Doc}}</h3>
+    <input type="file" class="file-input" [accept]="requiredFileType" (change)="onOrganizationMandatory_3Selected($event)" #file3Upload
+      style="display: none;" />
+
+    <div class="mb-2">
+      <span [ngClass]="fileNameOrganizationMandatory_3? 'mat-text-success' : 'mat-text-danger'">
+        {{ fileNameOrganizationMandatory_3|| 'No file uploaded yet.' }}
+      </span>
+
+    </div>
+    <br>
+    <div class="mb-2" *ngIf="isOrganizationMandatory_3Selected">
+      <button mat-raised-button (click)="file3Upload.click()">
+        <mat-icon>attach_file</mat-icon> Select
+      </button>
+    </div>
+    <div class="mb-2" *ngIf="!isOrganizationMandatory_3Selected">
+      <button mat-raised-button (click)="submitOrganizationMandatory_3()" [disabled]="isOrganizationMandatory_3Selected">
+        <mat-icon>cloud_upload</mat-icon> Upload
+      </button>
+      <!-- <input type="file" #file3Upload style="display: none;" (change)="onBINSelected($event)"> -->
+      <button mat-raised-button (click)="cancelOrganizationMandatory_3()">
+        <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+      </button>
+    </div>
+  
+  </div>
+  <div *ngIf="isRequired_4">
+    <h3 style="color: var(--medium-blue);">{{OrganizationMandatory_4Doc}}</h3>
+    <input type="file" class="file-input" [accept]="requiredFileType" (change)="onOrganizationMandatory_4Selected($event)" #file4Upload
+      style="display: none;" />
+
+    <div class="mb-2">
+      <span [ngClass]="fileNameOrganizationMandatory_4? 'mat-text-success' : 'mat-text-danger'">
+        {{ fileNameOrganizationMandatory_4|| 'No file uploaded yet.' }}
+      </span>
+
+    </div>
+    <br>
+    <div class="mb-2" *ngIf="isOrganizationMandatory_4Selected">
+      <button mat-raised-button (click)="file4Upload.click()">
+        <mat-icon>attach_file</mat-icon> Select
+      </button>
+    </div>
+    <div class="mb-2" *ngIf="!isOrganizationMandatory_4Selected">
+      <button mat-raised-button (click)="submitOrganizationMandatory_4()" [disabled]="isOrganizationMandatory_4Selected">
+        <mat-icon>cloud_upload</mat-icon> Upload
+      </button>
+      <!-- <input type="file" #file3Upload style="display: none;" (change)="onBINSelected($event)"> -->
+      <button mat-raised-button (click)="cancelOrganizationMandatory_4()">
+        <mat-icon style="color: #f2f2f2;">delete</mat-icon> Cancel
+      </button>
+    </div>
+  </div>
+  
+</div>

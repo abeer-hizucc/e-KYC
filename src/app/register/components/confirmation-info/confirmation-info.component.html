@@ -1,0 +1,77 @@
+<div class="containerr">
+  <h1>Confirm your NID number and date of birth</h1>
+  <form [formGroup]="confirmationInfoForm">
+    <ng-template matStepLabel>Check NID Number and Date Of Birth</ng-template>
+    <mat-form-field appearance="outline">
+      <mat-label>NID Number</mat-label>
+      <input matInput placeholder="NID number" formControlName="nidNumber" />
+      <mat-error
+        *ngIf="
+          confirmationInfoForm
+            .get('nidNumber')
+            ?.hasError('nidNumberValidity') &&
+          confirmationInfoForm.get('nidNumber')?.touched
+        "
+      >
+        Wrong NID format
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Choose Date-Of-Brith</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br />
+    <h2>Upload your recent photograph</h2>
+    <br />
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      #fileUpload
+      style="display: none"
+    />
+    <div class="mb-2">
+      <span [ngClass]="fileName ? 'mat-text-success' : 'mat-text-danger'">
+        {{ fileName || "No file uploaded yet." }}
+      </span>
+    </div>
+    <br />
+    <div class="mb-2" *ngIf="isPhotoSelected">
+      <button mat-raised-button (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon> Select
+      </button>
+    </div>
+    <div class="file-preview" *ngIf="filePreview && !isPhotoSelected">
+      <img [src] ="filePreview" alt="Recent Photo">
+    </div>
+    <div class="mb-2" *ngIf="!isPhotoSelected">
+      <button
+      mat-raised-button
+      (click)="onSubmit()"
+      [disabled]="isPhotoSelected"
+    >
+      <mat-icon>cloud_upload</mat-icon> Upload
+    </button>
+    <button mat-raised-button (click)="cancel()">
+      <mat-icon>delete</mat-icon> Cancel
+    </button>
+    </div>
+  </form>
+  <br>
+  <div *ngIf="confirmationInfoForm.get('photo').errors?.invalidType">
+    <span [ngClass]="'mat-text-danger'">*Please select a jpg, jpeg, or png image and within size of 5MB.</span>
+   </div>
+
+  <br />
+  <ng-container *ngIf="confirmInfoLoadingSpinner; else formContent">
+    <mat-spinner></mat-spinner>
+    Waiting for NID Verification...
+  </ng-container>
+
+  <ng-template #formContent> </ng-template>
+</div>

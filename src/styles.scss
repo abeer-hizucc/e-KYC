@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+The Custom Theme is in development. Components wont be as neat as pre built themes.
+During presentation kindly uncomment the prebuilt theme and comment the custom theme.
+*/
+@use '@angular/material' as mat;
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; 
+@import "assets/css/partials/includes";
+
+@include mat.core();
+
+$primary-color:mat.define-palette(mat.$blue-palette,800);
+$secondary-color:mat.define-palette(mat.$light-blue-palette,700);
+$warn-color:mat.define-palette(mat.$red-palette,500);
+$accent-color:mat.define-palette(mat.$amber-palette,300);
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $primary-color,
+   accent: $accent-color,
+   warn: $warn-color,
+   secondary: $secondary-color,
+ ),
+ density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
+
+
+
+

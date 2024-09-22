@@ -1,0 +1,55 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+    margin-right: 5px;
+    margin-left:5px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+   h1{
+    font-weight: bold;
+    font-size: 24pt;
+    color: #155fbf;
+  }
+  .containerr{
+    margin-left:20px;
+  }
+  @import "../../../../assets/css/partials/variables";
+
+span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  margin-left: 10px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 24pt;
+  color: #155fbf;
+}
+
+.mat-text-danger {
+  text-decoration: dashed;
+  color: $red;
+}
+
+.mat-text-success {
+  text-decoration: bold;
+  color: green;
+}
+
+.mb-2 button {
+  color: $white; 
+  background-color: $medium-blue;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.file-preview img{
+  width:10%;
+  height: 5%;
+}

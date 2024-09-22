@@ -1,0 +1,27 @@
+.card-container {
+    
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 28px;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: 384px;
+    width: 840px;
+    justify-content: center;
+}
+
+.form-container{
+  margin-left:25%;
+  margin-top: 5%;
+  border-radius: 28px;
+  background: #fdfeff;
+  width: 840px;
+  min-height: 384px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+:host ::ng-deep .mat-mdc-text-field-wrapper {
+    width: 200%;
+}

@@ -1,0 +1,57 @@
+.mat-mdc-form-field {
+    margin-top: 16px;
+    margin-right: 10px;
+    width: 20%;
+  }
+.mat-mdc-form-field  span{
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  margin-left: 10px;
+}
+.mt-3 h3{
+  font-size: 20px;
+  font-weight: bold;
+  color: #155fbf;
+}
+.mat-body-3{
+  font-size: 17px;
+  font-weight: 400;
+  color: #000000;
+  margin-left: 10px;
+}
+.mat-card-title h1{
+  font-weight: bold;
+  color: #155fbf;
+}
+.mb-2 button{
+  color: #f2f2f2; 
+  background-color: #0d6ba6;
+  font-weight: bold;
+  margin-right: 20px ;
+}
+.mat-text-danger{
+  text-decoration: dashed;
+  color: red;
+}
+.mat-text-success{
+  text-decoration: bold;
+  color: green;
+}
+.mat-card{
+  box-shadow: none;
+}
+.container{
+  margin-left: 20px;
+}
+
+.mat-snack-bar-success{
+  background-color: var(--medium-blue);
+}
+.mat-snack-bar-error{
+  background-color: var(--red);
+}
+.container{
+  margin-left: 20px;
+  margin-bottom: 20px;
+}

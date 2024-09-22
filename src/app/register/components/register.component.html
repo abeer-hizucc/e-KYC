@@ -1,0 +1,51 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step label="NID Upload" [completed]="isNIDUploadComplete">
+    <app-nid-upload (onFormCompletion)=" onNIDUploadCompletion($event)"></app-nid-upload>
+
+    <div class="stepper-button">
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Confirm NID Number and Date of Birth" [completed]="isConfirmInfoComplete">
+  
+      <app-confirmation-info 
+        (onFormCompletion)="onConfirmInfoCompletion($event)"
+        ></app-confirmation-info>
+    
+    <div class="stepper-button">
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext (click)="confirmationInfoComponent.onSubmit()">Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Personal Information" [completed]="isPersonalInfoComplete">
+    <ng-container *ngIf="nidResponseInfo$|async as nidResponseInfo else loadingRegistrationForm">
+      <app-registration-form [responseRegistrationForm]="nidResponseInfo"
+        (onFormCompletion)="onPersonalInfoCompletion($event)"></app-registration-form>
+    </ng-container>
+    <ng-template #loadingRegistrationForm>
+      <mat-spinner></mat-spinner>
+      Loading...
+    </ng-template>
+    
+    <div class="stepper-button">
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext (click)="registrationFormComponent.onSubmit()">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step label="Password" [completed]="isPasswordComplete">
+    <app-password (onFormCompletion)="onPasswordCompletion($event)"></app-password>
+    <br>
+    <div class="stepper-button">
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext (click)="passwordComponent.onSubmit()">Submit</button>
+
+    </div>
+  </mat-step>
+  <mat-step label ="Verify-Email">
+    <app-verify-email>
+    </app-verify-email>
+    <br>
+
+  </mat-step>
+</mat-horizontal-stepper>

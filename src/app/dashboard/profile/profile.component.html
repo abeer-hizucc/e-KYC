@@ -1,0 +1,277 @@
+<div class="authorization-container">
+  <div class="user-info">
+
+    <h1>User Profile</h1>
+    <br />
+    <ng-container *ngIf="userInfo.userPhotoDocument">
+      <div class="img-circle" *ngIf="!loader">
+        <div class="image-container">
+          <img [src]="getUserPhotoURL()" alt="User Photo" />
+          <input type="file" #fileUpload [accept]="requiredFileType" (change)="onUserPhotoSelected($event)"
+            style="display: none;" />
+          <button mat-mini-fab matTooltip="Edit" class="edit-button" (click)="onEditButtonClick()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+      <ngx-skeleton-loader class="img-circle" count="1" appearance="circle" *ngIf="loader" [theme]="{
+        'height': '200px',
+        'width': '200px',
+         'background-color': '#E3F2FD',
+      }">
+      </ngx-skeleton-loader>
+    </ng-container>
+
+    <div *ngIf="userprofileForm">
+
+      <form [formGroup]="userprofileForm" #form>
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label> User Name</mat-label>
+              <input matInput placeholder="User Name" formControlName="userName" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label> Email</mat-label>
+              <input matInput placeholder="Email" formControlName="email" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Given Name</mat-label>
+              <input matInput placeholder="Given name" formControlName="givenName" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Sur Name</mat-label>
+              <input matInput placeholder="Sur name" formControlName="surName" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Father's Name (Bangla)</mat-label>
+              <input matInput placeholder="Father's Name" formControlName="fathersName" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Mother's Name (Bangla)</mat-label>
+              <input matInput placeholder="Mother's Name" formControlName="mothersName" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label> NID Number</mat-label>
+              <input matInput placeholder="NID number" formControlName="nidNumber" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label><mat-icon matSuffix>date_range</mat-icon>Date of
+                Birth</mat-label>
+              <input matInput placeholder="Date of Birth" formControlName="dateOfBirth" />
+            </mat-form-field>
+            <ngx-skeleton-loader class="form-field" *ngIf="loader" count="1" appearance="line"
+              [theme]="{ 'background-color':'#E3F2FD' }"></ngx-skeleton-loader>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Gender</mat-label>
+              <mat-select placeholder="Select Gender" formControlName="gender">
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Nationality</mat-label>
+              <input matInput placeholder="Nationality" formControlName="nationality" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Change Password</mat-label>
+              <mat-select placeholder="Change Password" formControlName="changePassword">
+                <mat-option value="yes">Yes</mat-option>
+                <mat-option value="no">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-field"></div>
+        </div>
+
+        <div class="form-row" *ngIf="userprofileForm.get('changePassword')?.value === 'yes'">
+
+          <div class="form-field">
+            <mat-form-field appearance="outline" *ngIf="!loader">
+              <mat-label>Current Password</mat-label>
+              <mat-spinner *ngIf="isPasswordChecking" matSuffix diameter="30" style="margin: 5px;"></mat-spinner>
+              <input matInput type="password" placeholder="Provide your Current Password"
+                formControlName="currentPassword" />
+            </mat-form-field>
+            <!-- <mat-error *ngIf="!isPasswordValid$ && userprofileForm.get('currentPassword')?.touched">
+              Password is not correct
+            </mat-error> -->
+            
+          </div>
+          <div class="form-field"><button mat-raised-button (click)="checkValidPassword()">Check</button></div>
+        </div>
+        <div *ngIf="isPasswordValid$ | async as isPasswordValid; else notValid">
+
+
+          <div *ngIf="isPasswordValid">
+            <div class="form-row">
+              <div class="form-field">
+                <mat-form-field appearance="outline" *ngIf="!loader">
+                  <mat-label>New Password</mat-label>
+                  <input matInput type="password" placeholder="Provide your New Password"
+                    formControlName="newPassword" />
+                </mat-form-field>
+                <mat-error
+                  *ngIf="userprofileForm.get('newPassword')?.hasError('passwordValidity') && userprofileForm.get('newPassword')?.touched">
+                  Password must contain at least 8 characters with combination of letter, number and symbol.
+                </mat-error>
+
+              </div>
+              <div class="form-field">
+                <mat-form-field appearance="outline" *ngIf="!loader">
+                  <mat-label>Confirm New Password</mat-label>
+                  <input matInput type="password" placeholder="Confirm New Password"
+                    formControlName="confirmPassword" />
+                  <mat-error
+                    *ngIf="userprofileForm.get('newPassword')?.value!=userprofileForm.get('confirmPassword')?.value">
+                    Passwords do not match
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!isPasswordValid">
+            <h3 *ngIf="!loader" style="color: red;">Please Provide Correct Password</h3>
+          </div>
+        </div>
+
+        <ng-template #notValid>
+        </ng-template>
+
+
+
+
+      </form>
+      <br />
+      <div class="button-layout">
+        <button mat-raised-button (click)="toggleFormEditing()" *ngIf="!loader">
+          Edit<mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-raised-button (click)="resetUserProfile()" *ngIf="!loader">Reset</button>
+        <button mat-stroked-button (click)="updateUserProfile()" *ngIf="!loader "
+          [disabled]="userprofileForm.get('newPassword')?.value === ''&& userprofileForm.get('changePassword')?.value==='yes'">Update</button>
+      </div>
+    </div>
+
+    <div class="photo-info" *ngIf="!loader">
+      <br />
+      <h2>Uploaded Documents</h2>
+      <div class="front-cover-photo">
+        <h3>NID Front Cover</h3>
+        <ng-container *ngIf="userInfo.nidFrontDocument">
+          <!-- <div class="level">
+            <img [src]="getNIDFrontURL()" alt="NID Front" width="300px" height="200px" />
+          </div> -->
+          <button mat-raised-button (click)="viewNID(this.userInfo.nidFrontDocument)">
+            View
+          </button>
+          <button mat-raised-button (click)="
+              downloadNID(userInfo.nidFrontDocument, 'NIDFrontCover')
+            ">
+            Download
+          </button>
+          <mat-menu #menuFrontBack="matMenu">
+            <input type="file" [accept]="requiredFileType" (change)="onNIDFrontSelected($event)" #fileNIDFrontUpload
+              style="display: none;">
+            <button mat-raised-button (click)="fileNIDFrontUpload.click()">
+              <mat-icon>attach_file</mat-icon>Select
+            </button>
+            <button mat-raised-button (click)="submitNIDFront()"
+              [disabled]="isNIDFrontSelected"><mat-icon>cloud_upload</mat-icon> Upload</button>
+            <button mat-raised-button (click)="cancelNIDFront()"><mat-icon>delete</mat-icon> Cancel</button>
+          </mat-menu>
+          <button mat-raised-button [matMenuTriggerFor]="menuFrontBack">
+            <mat-icon>more_vert</mat-icon> Edit</button>
+        </ng-container>
+      </div>
+      <div class="back-cover-photo">
+        <h3>NID Back Cover</h3>
+        <ng-container *ngIf="userInfo.nidFrontDocument">
+          <!-- <div class="level">
+            <img [src]="getNIDBackURL()" alt="NID Front" width="300px" height="200px" />
+          </div> -->
+          <button mat-raised-button (click)="viewNID(this.userInfo.nidBackDocument)">
+            View
+          </button>
+          <button mat-raised-button (click)="downloadNID(userInfo.nidBackDocument, 'NIDBackCover')">
+            Download
+          </button>
+          <mat-menu #menuNIDBack="matMenu">
+            <input type="file" [accept]="requiredFileType" (change)="onNIDBackSelected($event)" #fileNIDBackUpload
+              style="display: none;">
+            <button mat-raised-button (click)="fileNIDBackUpload.click()">
+              <mat-icon>attach_file</mat-icon> Select
+            </button>
+            <button mat-raised-button (click)="submitNIDBack()" [disabled]="isNIDBackSelected">
+              <mat-icon>cloud_upload</mat-icon> Upload
+            </button>
+
+            <button mat-raised-button (click)="cancelNIDBack()">
+              <mat-icon>delete</mat-icon> Cancel
+            </button>
+          </mat-menu>
+
+          <button mat-raised-button [matMenuTriggerFor]="menuNIDBack">
+            <mat-icon>more_vert</mat-icon>Edit
+          </button>
+          <br />
+
+
+        </ng-container>
+        <button mat-stroked-button (click)="updateUserProfile()" *ngIf="!loader "
+          [disabled]="userprofileForm.get('newPassword')?.value === ''&& userprofileForm.get('changePassword')?.value==='yes'">Update</button>
+
+      </div>
+      <!-- <button mat-raised-button (click)="goToApplicationForm()">Application Form</button> -->
+    </div>
+  </div>
+</div>

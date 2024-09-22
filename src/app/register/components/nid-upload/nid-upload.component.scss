@@ -1,0 +1,82 @@
+// Define variables for common colors and font sizes
+$primary-color: #155fbf;
+$secondary-color: #0d6ba6;
+$text-color: #000000;
+$error-color: red;
+$success-color: green;
+$font-size-base: 14px;
+$font-weight-normal: 400;
+$font-weight-bold: bold;
+
+// Define styles for different selectors using SCSS syntax
+.mat-mdc-form-field {
+  margin-top: 16px;
+  margin-right: 10px;
+  span {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    color: $text-color;
+    margin-left: 10px;
+  }
+}
+
+.mt-3 {
+  h3 {
+    font-size: 20px;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+  }
+}
+
+.mat-body-3 {
+  font-size: 17px;
+  font-weight: $font-weight-normal;
+  color: $text-color;
+  margin-left: 10px;
+}
+
+.mat-card-title {
+  h1 {
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+  }
+}
+
+.mb-2 {
+  button {
+    color: #f2f2f2;
+    background-color: $secondary-color;
+    font-weight: $font-weight-bold;
+    margin-right: 20px;
+  }
+}
+
+.mat-text-danger {
+  text-decoration: dashed;
+  color: $error-color;
+}
+
+.mat-text-success {
+  text-decoration: bold;
+  color: $success-color;
+}
+
+.mat-card {
+  box-shadow: none;
+}
+
+.container {
+  margin-left: 20px;
+}
+
+.mat-snack-bar-success {
+  background-color: $primary-color;
+}
+
+.mat-snack-bar-error {
+  background-color: $error-color;
+}
+.file-preview img{
+  width:10%;
+  height: 5%;
+}

@@ -1,0 +1,93 @@
+<form [formGroup]="applicationForm">
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label> eKYC Number</mat-label>
+        <input
+          matInput
+          placeholder="eKYC Number"
+          formControlName="eKYCNumber"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-field"></div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Given Name</mat-label>
+        <input matInput placeholder="Given name" formControlName="givenName" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Sur Name</mat-label>
+        <input matInput placeholder="Sur name" formControlName="surName" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Father's Name (Bangla)</mat-label>
+        <input
+          matInput
+          placeholder="Father's Name"
+          formControlName="fathersName"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Mother's Name (Bangla)</mat-label>
+        <input
+          matInput
+          placeholder="Mother's Name"
+          formControlName="mothersName"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label> NID Number</mat-label>
+        <input matInput placeholder="NID number" formControlName="nidNumber" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label
+          ><mat-icon matSuffix>date_range</mat-icon>Date of Birth</mat-label
+        >
+        <input
+          matInput
+          placeholder="Date of Birth"
+          formControlName="dateOfBirth"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <input matInput placeholder="Gender" formControlName="gender" />
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Nationality</mat-label>
+        <input
+          matInput
+          placeholder="Nationality"
+          formControlName="nationality"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+</form>

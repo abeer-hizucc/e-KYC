@@ -1,0 +1,9 @@
+@import 'variables';
+
+$headings:h1,h2,h3;
+
+@each $heading in $headings{
+    #{$heading}{
+        color: $medium-blue;
+    }
+}

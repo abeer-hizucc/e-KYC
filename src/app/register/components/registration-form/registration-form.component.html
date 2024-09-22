@@ -1,0 +1,118 @@
+<h1 style="color: var(--medium-blue);">Complete The Registration Form</h1>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="Username" formControlName="userName">
+        <mat-error *ngIf="registrationForm.get('userName')?.hasError('required') && registrationForm.get('userName')?.touched">
+          User Name is required.
+        </mat-error>
+      </mat-form-field>
+      
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Given Name</mat-label>
+        <input matInput placeholder="Given name" formControlName="givenName">
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Sur Name</mat-label>
+        <input matInput placeholder="Sur name" formControlName="surName">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+
+
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Father's Name (Bangla)</mat-label>
+        <input matInput placeholder="Father's Name" formControlName="fathersName">
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Mother's Name (Bangla)</mat-label>
+        <input matInput placeholder="Mother's Name" formControlName="mothersName">
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label> <mat-icon matSuffix>call</mat-icon> Phone Number</mat-label>
+        <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+        <mat-error *ngIf="registrationForm.get('phoneNumber')?.hasError('phoneNumber') && registrationForm.get('phoneNumber')?.touched">
+          Invalid phone number
+        </mat-error>
+      </mat-form-field>
+     
+    </div>
+
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label> NID Number</mat-label>
+        <input matInput placeholder="NID number" formControlName="nidNumber">
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label><mat-icon matSuffix>date_range</mat-icon>Date of Birth</mat-label>
+        <input matInput placeholder="Date of Birth" formControlName="dateOfBirth">
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select placeholder="Select Gender" formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Nationality</mat-label>
+        <input matInput placeholder="Nationality" formControlName="nationality" (keydown.enter)="onSubmit()">
+        <mat-error *ngIf="registrationForm.get('nationality')?.hasError('required') && registrationForm.get('nationality')?.touched">
+          Please enter your Nationality
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label><mat-icon matSuffix> email</mat-icon>Email-Address</mat-label>
+        <input matInput placeholder="email" formControlName="email">
+        <mat-error *ngIf="registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.touched">
+          Email is required.
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('email')?.hasError('email') && registrationForm.get('email')?.touched">
+          Invalid email format.
+        </mat-error>
+      </mat-form-field>  
+    </div>
+  </div>
+</form>
+

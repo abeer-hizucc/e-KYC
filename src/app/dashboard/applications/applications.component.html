@@ -1,0 +1,67 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [completed]="isCertifioateInfoComplete">
+        <ng-template matStepLabel>APPLICATION TYPE</ng-template>
+        <app-application-type (applicationTypeSelected)="onApplicationTypeSelected($event)"
+            (onFormCompletion)="onCertificateInfoCompletion($event)"></app-application-type>
+        <div class="stepper-button">
+            <button mat-raised-button matStepperNext (click)="applicationTypeComponent.onSubmit()">Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>APPLICANT DETAILS</ng-template>
+        <ng-container *ngIf="userInfoFromBackend$|async as userInfo;else loading">
+
+            <app-application-form [applicationFormValue]="userInfo"></app-application-form>
+        </ng-container>
+        <ng-template #loading>
+            <mat-spinner></mat-spinner>
+            Waiting for Userinfo... 
+        </ng-template>
+        <div class="stepper-button">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [completed]="isResidentialAddressComplete">
+        <ng-template matStepLabel> RESIDENTIAL ADDRESS</ng-template>
+        <app-residential-address (onFormCompletion)="onResidentialAddressCompletion($event)"></app-residential-address>
+        <div class="stepper-button">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext (click)="residentialAddressComponent.onSubmit()">Next</button>
+        </div>
+    </mat-step>
+    <mat-step *ngIf="selectedApplicationType === 'organization' || selectedApplicationType ==='government'" [completed]="isOrganizationDetailsComplete">
+        <ng-template matStepLabel> ORGANIZATION DETAILS</ng-template>
+        <app-organization-details
+            (onFormCompletion)="onOrganizationalDetailsCompletion($event)"></app-organization-details>
+        <div class="stepper-button">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext (click)="organizationDetailsComponent.onSubmit()">Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>MANDATORY DOCUMENTS</ng-template>
+        <app-verification-document-upload></app-verification-document-upload>
+        <div class="stepper-button">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step *ngIf="selectedApplicationType === 'organization'||selectedApplicationType ==='government'">
+        <ng-template matStepLabel>ORGANIZATIONAL DOCUMENTS</ng-template>
+        <app-organizational-document></app-organizational-document>
+        <div class="stepper-button">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>ADDITIONAL DOCUMENTS</ng-template>
+        <app-other-documents></app-other-documents>
+        <div class="stepper-button">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext (click)="otherDocumentsComponent.onSubmit()">Submit</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

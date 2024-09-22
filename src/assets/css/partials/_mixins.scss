@@ -1,0 +1,12 @@
+@mixin flex-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin generic-button{
+    margin:5%;
+    background-color: $medium-blue;
+    color: $white;
+
+}

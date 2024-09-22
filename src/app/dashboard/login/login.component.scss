@@ -1,0 +1,64 @@
+@import '../../../assets/css/partials/variables';
+
+.title{
+  display: flex;
+  flex-direction: column;
+}
+
+h2{
+  display: flex;
+  font-size: 24pt;
+}
+
+.close-icon-button-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.close-icon-button{
+  margin: 0;
+  background-color: $white;
+}
+
+.login-form-container{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+ 
+.para{
+  font-weight: bold;
+  color: $medium-blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+ }
+
+ .para cite{
+  font-weight: bold;
+  color: $medium-blue;
+}
+
+.para cite:hover{
+  cursor: pointer;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; 
+}
+
+.mb2{
+  button{
+    background-color: $medium-blue;
+    color: $white;
+  }
+}
+.login-error{
+  color: $red;
+}
